@@ -1,1 +1,21 @@
-
+name: second
+on: push
+jobs:
+  Linux-Job:
+    runs-on: ubuntu-latest
+    steps: 
+      - run: date
+  Windows-Job: 
+    runs-on: windows-latest
+    steps: 
+      - run: date
+  Mac-OS-Job:
+    runs-on: macos-latest
+    steps: 
+      - run: date
+  Last-Job:
+    needs: [Linux-Job,Windows-Job,Mac-OS-Job]
+    runs-on: ubuntu-latest
+    steps: 
+      - run: date
+    
