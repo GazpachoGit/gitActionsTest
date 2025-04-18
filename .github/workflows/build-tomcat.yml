@@ -1,0 +1,44 @@
+name: build tomcat
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout tomcat-users.xml
+      uses: actions/checkout@v2
+      
+    - name: List project files and java version
+      run: |
+       ls -ltr
+       java -version
+       
+    - name: Checkout Apache Tomcat
+      uses: actions/checkout@v2
+      with:
+        repository: apache/tomcat #git repository name
+        ref: master #tag, branch,...
+        path: ./tomcat # output path under $GITHUB_WORKSPACE
+
+    - name: Setup Java 9
+      uses: actions/setup-java@v1
+      with:
+        java-version: '9.0.4'
+        java-package: jdk
+        archtecture: x64
+        
+    - name: List project
+      run: |
+        ls -ltr
+        java -version
+        
+    - name: Copy tomcat local users.xml into Tomcat config
+      run: cp -v tomcat-users.xml ./tomcat/conf/tomcat-users.xml
+
+    - name: Build Tomcat
+      run: |
+        cd ./tomcat
+        ant
+    
