@@ -46,7 +46,7 @@ jobs:
           name: linux
 
       - name: Test ${{env.SOURCE_FILE_NAME}}
-        run: source ./test.sh
+        run: source ./test_go_app_for_linux.sh
 
   test-windows:
     name: Test Windows
