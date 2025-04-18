@@ -1,5 +1,5 @@
 name: second
-on: push
+on: [pull_request]
 jobs:
   Linux-Job:
     runs-on: ubuntu-latest
