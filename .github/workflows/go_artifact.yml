@@ -62,7 +62,7 @@ jobs:
       with:
         name: windows
         
-    - name: Test ${{ env.FILE_NAME }}
-      run: windows/${{ env.FILE_NAME }}.exe
+    - name: Test ${{ env.SOURCE_FILE_NAME }}
+      run: windows/${{ env.SOURCE_FILE_NAME }}.exe
 
         
