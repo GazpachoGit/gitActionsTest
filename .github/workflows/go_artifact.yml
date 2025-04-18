@@ -3,7 +3,7 @@ name: Go artifact
 on: push
 
 env:
-  SOURCE_FILE_NAME: hello-server
+  SOURCE_FILE_NAME: hello_server
 
 jobs:
   build_go_app:
