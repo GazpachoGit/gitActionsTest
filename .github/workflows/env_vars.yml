@@ -1,6 +1,6 @@
 name: Env vars
 env: 
-      WORKSPACE_ENV_VAR: 'job env var for ubuntu'
+      WORKSPACE_ENV_VAR: 'workspace env var for ubuntu'
       OVER_RIDE: 'Workspace'
 on: push
 
@@ -19,12 +19,12 @@ jobs:
         echo "Access env vars using linux shell syntax"
         echo $WORKSPACE_ENV_VAR
         echo "1. $WORKSPACE_ENV_VAR"
-        echo "2. JOB_ENV_VAR"
+        echo "2. $JOB_ENV_VAR"
         echo "3. $STEP_ENV_VAR"
         echo "4. $OVER_RIDE"
         echo ""
         echo "-----------------------------------------------"
-        echo "Access env vars using linux yaml syntax"
+        echo "Access env vars using YAML syntax"
         echo "5. ${{env.WORKSPACE_ENV_VAR}}"
         echo "6. ${{env.JOB_ENV_VAR}}"
         echo "7. ${{env.STEP_ENV_VAR}}"
