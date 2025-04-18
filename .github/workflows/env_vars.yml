@@ -2,7 +2,7 @@ name: Env vars
 env: 
       WORKSPACE_ENV_VAR: 'workspace env var for ubuntu'
       OVER_RIDE: 'Workspace'
-on: push
+on: pull_request
 
 jobs:
   ubuntu:
