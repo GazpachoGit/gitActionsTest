@@ -14,8 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
+      - run: ls -ltra
+
       - name: Setup Python env
-        uses: actions/setup-python@v1.1.1
+        uses: actions/setup-python@v5
 
       - name: Install requirements
         run: pip install --quiet --requirement requirements.txt
