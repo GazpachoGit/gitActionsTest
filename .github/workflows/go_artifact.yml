@@ -1,0 +1,68 @@
+name: Go artifact
+
+on: push
+
+env:
+  SOURCE_FILE_NAME: hello-server
+
+jobs:
+  build_go_app:
+    name: Build
+    runs-on: ubuntu-latest
+    steps: 
+
+    - name: Checkout code
+      uses: actions/checkout@v1
+
+    - name: Build ${{env.SOURCE_FILE_NAME}} for Linux ubuntu
+      run: go build ${{env.SOURCE_FILE_NAME}}.go
+
+    - name: Build ${{env.SOURCE_FILE_NAME}} for Windows
+      run: GOOS=windows GOARCH=amd64 go build ${{ env.SOURCE_FILE_NAME }}.go
+
+    - name: Upload artifact for Linux
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: linux
+        path: ./${{env.SOURCE_FILE_NAME}}
+        
+    - name: Upload artifact for Linux
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: windows
+        path: ./${{env.SOURCE_FILE_NAME}}.exe
+  
+  test-linux:
+    name: Test Linux
+    runs-on: ubuntu-latest
+    needs: [build_go_app]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+
+      - name: Download artifact
+        uses: actions/download-artifact@v1.0.0
+        with:
+          name: linux
+
+      - name: Test ${{env.SOURCE_FILE_NAME}}
+        run: source ./test.sh
+
+  test-windows:
+    name: Test Windows
+    runs-on: [windows-latest]
+    needs: [build_go_app]
+    steps:
+
+    - name: Check out code
+      uses: actions/checkout@v1
+
+    - name: Download artifact
+      uses: actions/download-artifact@v1.0.0
+      with:
+        name: windows
+        
+    - name: Test ${{ env.FILE_NAME }}
+      run: windows/${{ env.FILE_NAME }}.exe
+
+        
