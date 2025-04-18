@@ -37,6 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build_go_app]
     steps:
+      # need the shell script
       - name: Check out code
         uses: actions/checkout@v1
 
@@ -44,6 +45,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: linux
+      
+      - name: check files
+        run: ls -ltra
 
       - name: Test ${{env.SOURCE_FILE_NAME}}
         run: source ./test_go_app_for_linux.sh
