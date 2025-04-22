@@ -14,7 +14,9 @@ jobs:
 
     permissions:
       checks: write
-
+    defaults:
+      run:
+        working-directory: ./8_go_ci
     steps: 
     - uses: actions/checkout@v3
 
