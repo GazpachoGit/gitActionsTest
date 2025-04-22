@@ -14,7 +14,9 @@ jobs:
 
     permissions:
       checks: write
-
+    defaults:
+      run:
+        working-directory: ./8_go_ci
     steps: 
     - uses: actions/checkout@v3
 
@@ -25,10 +27,10 @@ jobs:
         cache: true
 
     - name: Revive Action
-      uses: morphy2k/revive-action@v2
+      uses: morphy2k/revive-action@2.4.1
 
     - name: Staticcheck
-      uses: dominikh/staticcheck-action@v1
+      uses: dominikh/staticcheck-action@1.3.0
 
     - name: Build
       run: |
