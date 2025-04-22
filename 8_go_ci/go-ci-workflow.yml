@@ -23,7 +23,7 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v3
       with: 
-        go-version-file: 'go.mod'
+        go-version-file: './8_go_ci/go.mod'
         cache: true
 
     - name: Revive Action
