@@ -32,6 +32,8 @@ jobs:
 
     - name: Staticcheck
       uses: dominikh/staticcheck-action@v1
+      with:
+        working-directory: './8_go_ci'
 
     - name: Build
       run: |
