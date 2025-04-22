@@ -28,7 +28,7 @@ jobs:
       uses: morphy2k/revive-action@v2
 
     - name: Staticcheck
-      uses: dominikh/staticcheck-action@1
+      uses: dominikh/staticcheck-action@v1
 
     - name: Build
       run: |
