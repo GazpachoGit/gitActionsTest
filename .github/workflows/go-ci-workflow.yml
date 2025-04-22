@@ -25,10 +25,10 @@ jobs:
         cache: true
 
     - name: Revive Action
-      uses: morphy2k/revive-action@2.4.1
+      uses: morphy2k/revive-action@v2
 
     - name: Staticcheck
-      uses: dominikh/staticcheck-action@1.3.0
+      uses: dominikh/staticcheck-action@1
 
     - name: Build
       run: |
